@@ -1,0 +1,34 @@
+{% extends "tasks/base.html" %}
+{% block title %}Edit task{% endblock %}
+{% block content %}
+<style>
+
+.custom-form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(180, 193, 203);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50%;
+    display: grid;
+    justify-items: flex-start;
+    align-content: center;
+  }
+  
+  .submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  </style>
+<h1>Edit task</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Update" class="submit-button">
+</form>
+{% endblock content %}

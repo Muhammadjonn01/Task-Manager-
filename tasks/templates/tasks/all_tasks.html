@@ -1,0 +1,66 @@
+{% extends "tasks/base.html" %}
+{% block title %}All tasks{% endblock %}
+      {% if user.is_authenticated %}
+{% block content %}
+
+<style>
+  .a1:hover
+  {
+    color: dimgray;
+  }
+  .a1
+  {
+    text-decoration: none;
+    color: black;
+  }
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+    <div >
+        <h1 style="text-align: center;">My tasks</h1>
+        <p style="text-align: center;">Click task name to see details or edit it</p>
+        <table>
+
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Created At</th>
+            <th>Status</th>
+          </tr>
+          
+            {% for i in task_list  %}
+            {% if i.user == user or user.is_superuser or not user.is_active and user.is_authenticated %}
+            <tr> 
+                <td class="td1"><a class="a1" href="{% url 'task_detail' i.pk %}">
+                    {{i.title}}
+</a></td>
+                <td>{{ i.description }}<br></td>
+                <td>{{ i.priority }}<br></td>
+                <td>{{ i.due_date }}<br></td>
+                <td>{{ i.created_at }}<br></td>
+                {% if i.is_done == False %}<td>Not completed</td>
+                {% else %}<td>Completed</td>{% endif %}
+            </tr>
+            {% endif %}
+        {% endfor %} 
+        </table>
+      </div>
+{% endblock content %}  
+{% endif %}
+

@@ -1,0 +1,92 @@
+{% extends "tasks/base.html" %}
+{% block title %}Task deteils{% endblock %}
+{% block content %}
+<style>
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.edit_link1 {
+    padding: 20px 30px;
+    background-color: black;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:all 0.3s ease;
+    font-weight: bold;
+    margin: auto;
+   
+    width: 70%;
+    margin-left: 200px;
+    text-align: center;
+  }
+  
+  .edit_link1:hover {
+    background-color: white;
+    transform: translateY(-2px);
+    border: 3px solid black;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+  }
+  .edit_link2 {
+    padding: 20px 30px;
+    background-color: black;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:all 0.3s ease;
+    font-weight: bold;
+    margin: auto;
+   
+    width: 70%;
+    margin-left: 50px;
+    text-align: center;
+  }
+  
+  .edit_link2:hover {
+    background-color: white;
+    transform: translateY(-2px);
+    border: 3px solid black;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    color: black;
+  }
+  </style>
+<h1 style="text-align:center; color:black;">Task Details</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Priority</th>
+    <th>Due Date</th>
+    <th>Status</th>
+    <th>Created At</th>
+  </tr>
+  <tr>
+    <td> {{task.title}} </td>
+    <td> {{task.priority}} </td>
+    <td> {{task.due_date}} </td>
+    {% if task.is_done == False %}<td>Not completed</td>
+    {% else %}<td>Completed</td>{% endif %}
+    <td> {{task.created_at}} </td>
+  </tr>
+</table>
+<div style="margin-top: 50px;margin-bottom: 20px;">
+<a href="{% url 'task_edit' task.pk %}" class="edit_link1">Edit this task</a>
+<a href="{% url 'task_delete' task.pk %}"class="edit_link2">Delete this task?</a>
+</div>
+
+
+         
+{% endblock content %}     

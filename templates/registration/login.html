@@ -1,0 +1,46 @@
+{% extends "tasks/base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<h2 style="text-align: center;">Sign in</h2>
+<style>
+  .a1:hover
+  {
+    color: dimgray;
+  }
+  .a1
+  {
+    text-decoration: none;
+    color: black;
+  }
+form {
+  margin: 20px; 
+  padding: 20px;
+  border: 1px solid #ccc; 
+}
+.but3
+    {
+      height: 55px;
+      border: 2px solid black;
+      padding: 10px 25px;
+      border-radius: 5px;
+      color: black;
+      font-size: 20px;
+      margin-left: 30px;
+    }
+    .but3:hover
+    {
+      color: white;
+      background-color: black;
+      transition: all 1s;
+    }
+</style>
+
+<form method="post"><center>{% csrf_token %}
+{{ form.as_p }}
+{% if not user.is_authenticated %}
+<p>If you don't have an account, <a class="a1" href="{% url 'signup' %}">Sign up</a></p>
+{% endif %}
+<button type="submit" class="but3">Sign in </button>
+</center>
+</form> 
+{% endblock content %}
