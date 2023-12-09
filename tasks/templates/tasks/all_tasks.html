@@ -44,8 +44,9 @@ tr:nth-child(even) {
             <th>Status</th>
           </tr>
           
-            {% for i in task_list  %}
+            {% for i in task_list%}
             {% if i.user == user or user.is_superuser or not user.is_active and user.is_authenticated %}
+
             <tr> 
                 <td class="td1"><a class="a1" href="{% url 'task_detail' i.pk %}">
                     {{i.title}}

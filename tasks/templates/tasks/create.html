@@ -2,10 +2,11 @@
 
 {% block title %}Create task{% endblock %}
 {% block content %}
-<style>.custom_form {
+<style>
+.custom_form {
     margin: 20px auto;
     padding: 20px;
-    background-color: rgba(105, 105, 105, 0.653);
+    background-color: white;
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 50%;
@@ -16,14 +17,30 @@
   .but1
     {
       height: 55px;
+      border: 2px solid white;
+      padding: 10px 25px;
+      border-radius: 5px;
+      color: white;
+      font-size: 20px;
+      margin-left: 30px;
+    }
+    .but1:hover
+    {
+      color: black;
+      background-color: white;
+      transition: all 1s;
+    }
+    .but3
+    {
+      height: 55px;
       border: 2px solid black;
       padding: 10px 25px;
       border-radius: 5px;
       color: black;
       font-size: 20px;
-      margin-left: 30px;
+      margin-left: 100px;
     }
-    .but1:hover
+    .but3:hover
     {
       color: white;
       background-color: black;
@@ -33,11 +50,6 @@
 <form action="" method="post" class="custom_form" >
     {% csrf_token %}
     {{ form.as_p}}
-    <button  type="submit" class="but1" >Submit</button>
-    
-    
+    <button  type="submit" class="but3" >Submit</button>
 </form>
-
-
-
 {% endblock content %}     
